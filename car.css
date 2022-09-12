@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+:root
+{
+    --color-white:hsl(252,30%,100%);
+    --background-light:hsl(252,30%,95%);
+    --color-gray:hsl(252,15%,65%);
+    --background-primary:hsl(252,75%,60%);
+    --color-secondary:hsl(252,100%,90%);
+    --background-success:hsl(120,95%,65%);
+    --background-danger:hsl(0,95%,65%);
+    --color-dark:hsl(252,30%,17%);
+    --background-success:hsl(120,30%,10%);
+    --border-radius:2rem;
+    --card-border-radius:1rem;
+    --btn-padding:0.6rem 2rem;
+    --search-padding:0.5rem 1rem;
+    --cell-padding:1rem;
+    --sticky-top-left:5.4rem;
+    --sticky-top-right:-18rem;
+}
+
+*,*::before , *::after
+{
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+transition: all 0.2s linear;
+}
+a, a:hover,a:focus
+{
+    text-decoration: none;
+    outline: none;
+}
+li
+{
+    list-style: none;
+}
+ul
+{
+    text-decoration: none;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: #ffffff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+.menu ul
+{
+display: none;
+border: 1px solid black;
+
+}
+.menu  li a
+{
+   
+    color: white;
+    justify-self: start;
+}
+.menu li:hover>ul
+{
+    display: block;
+    position: absolute;
+    background-color: black;
+    color: white;
+}
+.logo img
+{
+    height: 35px;
+    border-radius: 50%;
+}
+nav .menu
+{
+    display: flex;
+}
+nav .menu li a
+{
+    height: 50px;
+    line-height: 43px;
+    margin:0px;
+    padding: 10px 30px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #585858;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.search
+{
+    width: 250px;
+    height: 40px;
+    background-color: rgba(245, 245, 245, 0.8);
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 0px 20px;
+}
+.search input
+{
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+}
+.search i
+{
+    color: #3a3a3a;
+    padding-top: 10px;
+}
+nav .menu li a:hover
+{
+    color: #fff;
+    box-shadow: 5px 10px 5px rgba(8, 8, 8, 0.1);
+    transition: all ease 0.2s;
+    border-radius: 5px;
+}
+main .container-fluid
+{
+    position: relative;
+    top: 60px;
+    left: 0px;
+    width: 100%;
+    height: 500px;
+    background:url(C:\xampp\htdocs\Project\images\car3.jpg) 0 0 no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    margin-bottom: 50px;
+}
+main .container-fluid h1
+{
+    padding-top: 220px;
+    color: white;
+    text-transform: uppercase;
+}
+main .container-fluid h1::first-letter
+{
+    color: red;
+}
+
+main .container-fluid button
+{
+    background: red;
+    font-size: 22px;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+.container
+{
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    padding: 25px 20px;
+}
+.container .box-container
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(350px,1fr));
+    grid-gap: 20px;
+}
+.container .box-container .box
+{
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.container .box-container .box .image
+{
+    margin-bottom: 20px;
+    overflow:hidden;
+    height: 250px;
+    border-radius: 5px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.container .box-container .box .image img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.container .box-container .box:hover .image img
+{
+    transform: scale(1.1);
+}
+.container .box-container .box .content h3
+{
+    font-size: 20px;
+    color: #334;
+}
+.container .box-container .box .content h3
+{
+    font-size: 20px;
+    color: #334;
+}
+.container .box-container .box span
+{
+    color: blue;
+}
+.container .box-container .box .content .btn
+{
+    display: inline-block;
+    padding: 10px 3px;
+    border: 1px solid #334;
+    color: #334;
+    font-size: 16px;
+    background: red;
+}
+.container .box-container .box .content .btn:hover
+{
+    background-color: crimson;
+    border-color: crimson;
+    color: #fff;
+}
+.container .box-container .box .content .icon
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top:1px solid #334
+}
+.container .box-container .box .content .icon span
+{
+    font-size: 14px;
+    color: #777;
+}
+.container .box-container .box .content .icon span i
+{
+    color: crimson;
+    padding-right: 5px;
+}
+.product1 .pro-container .pro .icon
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top:1px solid #334
+}
+.product1 .pro-container .pro .icon .btn
+{
+    display: inline-block;
+    padding: 10px 3px;
+    border: 1px solid #334;
+    color: #334;
+    font-size: 16px;
+    background: red;
+}
+.product1 .pro-container .pro .icon .btn:hover
+{
+    background-color: crimson;
+    border-color: crimson;
+    color: #fff;
+}
+/*--------- slider ---------*/
+#slider 
+{
+     width:100%; 
+    height:400px;
+     position:relative; 
+     padding-bottom:10px; 
+     overflow:hidden;
+    }
+.slider-block 
+{
+    width:1066px; 
+    position:absolute; 
+    left:50%;
+     margin-left:-533px;
+}
+.slider 
+{ 
+    width:960px; 
+    height:400px;
+     margin:0 auto;
+}
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
