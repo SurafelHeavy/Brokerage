@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body
+		{
+			background-image: url(photo_2022-02-15_04-26-11.jpg);
+			background-repeat: repeat-x;
+			background-attachment: fixed;
+			background-size: cover;
+			
+		}
+		.form {
+    width: 360px;
+    height: 280px;
+    margin: auto;
+    border-radius: 3px;
+  }
+  form {
+    width: 300px;
+    margin-left: 20px;
+  }
+  form label {
+  	color: white;
+    display: flex;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  .car
+  {
+ 
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;	
+  }
+  form input {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+     margin-bottom: 20px;
+
+  }
+   button {
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: seagreen;
+    color: white;
+    font-size: 18px;
+  }
+  .image
+  {
+  	width: 300px;
+  	height: 150px;
+  	border: 2px solid #dddddd;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	background-color: darkgray;
+  }
+  .image_view
+  {
+  	display: none;
+	  width: 100%;
+  }
+  
+  
+		
+	</style>
+</head>
+<body>
+	<?php 
+// Include the database configuration file  
+require_once 'dbConfig.php'; 
+ 
+// If file upload form is submitted 
+$status = $statusMsg = ''; 
+if(isset($_POST["submit"])){ 
+    $status = 'error'; 
+    if(!empty($_FILES["image"]["name"])) { 
+        // Get file info 
+        $fileName = basename($_FILES["image"]["name"]); 
+        $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+         
+        // Allow certain file formats 
+        $allowTypes = array('jpg','png','jpeg','gif'); 
+        if(in_array($fileType, $allowTypes)){ 
+            $image = $_FILES['image']['tmp_name']; 
+            $imgContent = addslashes(file_get_contents($image)); 
+         
+            // Insert image content into database 
+            $insert = $db->query("INSERT into images (image, created) VALUES ('$imgContent', NOW())"); 
+             
+            if($insert){ 
+                $status = 'success'; 
+                $statusMsg = "File uploaded successfully."; 
+            }else{ 
+                $statusMsg = "File upload failed, please try again."; 
+            }  
+        }else{ 
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+        } 
+    }else{ 
+        $statusMsg = 'Please select an image file to upload.'; 
+    } 
+} 
+ 
+// Display status message 
+echo $statusMsg; 
+?>
+	<div class="form">
+		<form action="#" method="get" name="">
+
+			<label>Name</label>
+			<input type="text" name=""><br>
+			<label>Car Type</label>
+			<input type="date" id="current_date"><br>
+			<label>Date</label>
+			<select class="car">
+				<option>---Select---</option>
+				<option>V8</option>
+				<option>Hudson </option>
+				<option>Lincoln </option>
+				<option>Austin </option>
+
+			</select>
+			<label>Price</label>
+			<input type="number" name=""><br>
+			<label>Photo</label>
+			<input type="file" name="" id="inputFile" onchange="showPreview(event);" style="font-size: 20px;">
+			<div class="image" id="cont">
+				<img id="image_view" src="" >
+				<span class="image_text" id="image_text"></span>
+			</div>
+			<button>Submit</button>
+		</form>
+		<script>
+			document.getElementById("current_date").value = Date();
+			</script>
+
+	</div>
+	<script type="text/javascript">
+		  function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("image_view");
+    preview.src = src;
+    preview.style.display = "block";
+	preview.style.width="400px";
+	preview.style.height="200px";
+  }
+}
+		
+	</script>
+
+</body>
+</html>
